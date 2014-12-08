@@ -1,8 +1,14 @@
 var express = require('express')
 var app = express()
 
+var EOL = require('os').EOL;
+
 app.get('/', function (req, res) {
-  res.send('Hello World!')
+  res.send(['Hello World!',''].join(EOL));
+})
+
+app.get('/ping', function (req, res) {
+  res.send(['pong'].join(EOL));
 })
 
 var port = process.env.PORT || 3000
