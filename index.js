@@ -8,7 +8,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/ping', function (req, res) {
-  res.send(['pong'].join(EOL));
+  res.send(['pong',''].join(EOL));
 })
 
 var port = process.env.PORT || 3000
