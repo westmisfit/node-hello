@@ -3,6 +3,11 @@ var app = express()
 
 var EOL = require('os').EOL;
 
+app.use(function (req, res, next) {
+  console.log(req.originalUrl);
+  next();
+})
+
 app.get('/', function (req, res) {
   res.send(['Hello World!',''].join(EOL));
 })
