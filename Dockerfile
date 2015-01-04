@@ -1,6 +1,6 @@
 FROM misfit/cloud_nodejs
 
-RUN mkdir /work/logs
+RUN mkdir -p /work/logs
 
 ADD . /work
 
