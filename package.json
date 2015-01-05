@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/forhot2000/node-hello",
   "dependencies": {
-    "express": "^4.10.4"
+    "express": "^4.10.4",
+    "log4js": "^0.6.21"
   }
 }
