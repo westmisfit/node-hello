@@ -1,12 +1,7 @@
 var express = require('express');
 var app = express();
 var log4js = require('log4js');
-log4js.configure({
-  appenders: [
-    { type: 'console' },
-    { type: 'file', filename: 'logs/debug.log', category: 'node-hello' }
-  ]
-});
+log4js.configure('log4js.json', { cwd: __dirname });
 var logger = log4js.getLogger('node-hello');
 
 var EOL = require('os').EOL;
