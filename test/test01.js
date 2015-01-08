@@ -1,6 +1,6 @@
 var should = require("should")
 
-describe('MyClass', function () {
+describe('test01', function () {
 
   describe('addOne()', function () {
 

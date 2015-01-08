@@ -31,6 +31,7 @@
             <env key="NODE_PATH" value="/tmp/node_modules/" />
             <arg value="--reporter" />
             <arg value="xunit" />
+            <arg value="test" />
         </exec>
         <echo message="Tests done" />
     </target>
