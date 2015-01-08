@@ -20,5 +20,8 @@
   "dependencies": {
     "express": "^4.10.4",
     "log4js": "^0.6.21"
+  },
+  "devDependencies": {
+    "should": "^4.4.2"
   }
 }
