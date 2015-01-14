@@ -1,4 +1,5 @@
-A demo Web App, just return "Hello world!"
+A demo Web Server
+=================
 
 Routes:
 
