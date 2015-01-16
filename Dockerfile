@@ -16,4 +16,4 @@ ENV PORT 8080
 EXPOSE 8080
 
 # run web server on $PORT
-CMD node index.js
+CMD exec node index.js
