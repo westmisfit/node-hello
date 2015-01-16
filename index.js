@@ -12,7 +12,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', function (req, res) {
-  res.send(['Hello World!',''].join(EOL));
+  res.send(['Hello World!\nDate 2015-01-16',''].join(EOL));
 });
 
 app.get('/ping', function (req, res) {
