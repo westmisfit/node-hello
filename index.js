@@ -12,9 +12,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', function (req, res) {
-  setTimeout(function(){
-    res.send(['Hello World!',''].join(EOL));
-  }, 100)
+  res.send(['Hello World!',''].join(EOL));
 });
 
 var _request_count = 1;
