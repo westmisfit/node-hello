@@ -12,27 +12,31 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', function (req, res) {
-  res.send(['Hello World!',''].join(EOL));
+  setTimeout(function(){
+    res.send(['Hello World!',''].join(EOL));
+  }, 100)
 });
 
 app.get('/ping', function (req, res) {
   res.send(['pong',''].join(EOL));
 });
 
-var port = process.env.PORT || 3000;
+setTimeout(function init() {
+  var port = process.env.PORT || 3000;
 
-var server = app.listen(port, function () {
+  var server = app.listen(port, function () {
 
-  var host = server.address().address;
-  var port = server.address().port;
+    var host = server.address().address;
+    var port = server.address().port;
 
-  logger.debug('Example app listening at http://%s:%s', host, port);
+    logger.debug('Example app listening at http://%s:%s', host, port);
 
-});
-
-process.on('SIGTERM', function() {
-  server.close(function(){
-    console.log('the server is terminated');
-    process.exit(0);
   });
-});
+
+  process.on('SIGTERM', function() {
+    server.close(function(){
+      console.log('the server is terminated');
+      process.exit(0);
+    });
+  });
+}, 3000);
