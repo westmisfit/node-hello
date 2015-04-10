@@ -40,3 +40,10 @@ var server = app.listen(port, function () {
   logger.debug('Example app listening at http://%s:%s', host, port);
 
 });
+
+process.on('SIGTERM', function() {
+  server.close(function(){
+    console.log('the server is terminated');
+    process.exit(0);
+  });
+});
