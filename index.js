@@ -12,18 +12,9 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', function (req, res) {
-  res.send(['Hello World!',''].join(EOL));
-});
-
-var _request_count = 1;
-
-app.get('/wait/:time', function (req, res) {
-  var request_no = "[" + (_request_count++) + "]";
-  logger.debug(request_no + " wait for " + req.params.time + "ms")
   setTimeout(function(){
-    logger.debug(request_no + " delayed " + req.params.time + "ms")
-    res.send(['Hello World!','Date 2015-01-20',''].join(EOL));
-  }, req.params.time);
+    res.send(['Hello World!',''].join(EOL));
+  }, 100)
 });
 
 app.get('/ping', function (req, res) {
