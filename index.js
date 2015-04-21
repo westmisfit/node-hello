@@ -17,6 +17,12 @@ app.get('/', function (req, res) {
   }, 100)
 });
 
+app.get('/env', function (req, res) {
+  setTimeout(function(){
+    res.send(['<pre>', JSON.stringify(process.env, null, 2) ,'</pre>'].join(EOL));
+  }, 100)
+});
+
 app.get('/ping', function (req, res) {
   res.send(['pong',''].join(EOL));
 });
