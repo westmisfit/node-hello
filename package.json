@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "istanbul cover mocha -- -R spec"
+    "test": "istanbul cover _mocha -- -R spec"
   },
   "repository": {
     "type": "git",
