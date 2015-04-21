@@ -8,7 +8,7 @@ env:
     - NODE_ENV=staging
     - NODE_ENV=production
 before_install:
-  - npm install -g mocha istabul
+  - npm install -g mocha istanbul
 # By default, Travis CI will run
 # install: npm install
 after_success:
