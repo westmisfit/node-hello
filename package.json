@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha"
+    "test": "istanbul cover _mocha -- -R spec"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,6 @@
     "log4js": "^0.6.21"
   },
   "devDependencies": {
-    "mocha": "^2.2.4",
     "should": "^6.0.1"
   }
 }
