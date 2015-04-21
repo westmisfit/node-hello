@@ -10,7 +10,7 @@ env:
 before_install:
   - npm install -g mocha istanbul
 install:
-  - npm install --dev
+  - npm install --development
 after_success:
   - echo "NODE_ENV=$NODE_ENV WORK_PROCESSES=$WORK_PROCESSES AWS_KEY=$AWS_KEY"
 branches:
