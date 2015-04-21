@@ -9,8 +9,8 @@ env:
     - NODE_ENV=production
 before_install:
   - npm install -g mocha istanbul
-# By default, Travis CI will run
-# install: npm install
+install:
+  - npm install --dev
 after_success:
   - echo "NODE_ENV=$NODE_ENV WORK_PROCESSES=$WORK_PROCESSES AWS_KEY=$AWS_KEY"
 branches:
