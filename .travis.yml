@@ -9,7 +9,7 @@ env:
     - NODE_ENV=production
 before_install:
   - wget -qO- https://get.docker.com/ | sh
-  - docker version
+  - sudo docker version
 install:
   - npm install -g mocha istanbul
   - NODE_ENV=development npm install
