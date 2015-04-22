@@ -17,7 +17,3 @@ script:
   - npm start
 after_success:
   - echo "NODE_ENV=$NODE_ENV WORK_PROCESSES=$WORK_PROCESSES AWS_KEY=$AWS_KEY"
-branches:
-  only:
-    - master
-    - develop
