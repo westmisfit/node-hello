@@ -1,19 +1,12 @@
 language: node_js
 node_js:
+  # - "0.12"
+  # - "0.11"
   - "0.10"
-env:
-  global:
-    - WORK_PROCESSES=2
-  matrix:
-    - NODE_ENV=staging
-    - NODE_ENV=production
-before_install:
-  - npm install -g mocha istanbul
 install:
-  - NODE_ENV=development npm install
-after_success:
-  - echo "NODE_ENV=$NODE_ENV WORK_PROCESSES=$WORK_PROCESSES AWS_KEY=$AWS_KEY"
-branches:
-  only:
-    - master
-    - develop
+  - npm install -g mocha istanbul
+  - npm install
+script:
+  - git describe --always --tags --long
+  - git rev-parse --abbrev-ref HEAD
+  - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
