@@ -8,9 +8,13 @@ env:
     - NODE_ENV=staging
     - NODE_ENV=production
 before_install:
-  - npm install -g mocha istanbul
+  - wget -qO- https://get.docker.com/ | sh
+  - docker version
 install:
+  - npm install -g mocha istanbul
   - NODE_ENV=development npm install
+script:
+  - npm start
 after_success:
   - echo "NODE_ENV=$NODE_ENV WORK_PROCESSES=$WORK_PROCESSES AWS_KEY=$AWS_KEY"
 branches:
