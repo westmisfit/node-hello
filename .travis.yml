@@ -7,13 +7,11 @@ env:
   matrix:
     - NODE_ENV=staging
     - NODE_ENV=production
-before_install:
-  - npm install -g mocha istanbul
 install:
+  - npm install -g mocha istanbul
   - NODE_ENV=development npm install
+script:
+  - git describe --always --tags --long
+  - npm start
 after_success:
   - echo "NODE_ENV=$NODE_ENV WORK_PROCESSES=$WORK_PROCESSES AWS_KEY=$AWS_KEY"
-branches:
-  only:
-    - master
-    - develop
