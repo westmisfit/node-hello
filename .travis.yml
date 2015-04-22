@@ -12,6 +12,6 @@ install:
   - NODE_ENV=development npm install
 script:
   - git describe --always --tags --long
-  - npm start
+  - npm test
 after_success:
   - echo "NODE_ENV=$NODE_ENV WORK_PROCESSES=$WORK_PROCESSES AWS_KEY=$AWS_KEY"
