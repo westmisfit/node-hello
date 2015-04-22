@@ -1,17 +1,11 @@
 language: node_js
 node_js:
   - "0.10"
-env:
-  global:
-    - WORK_PROCESSES=2
-  matrix:
-    - NODE_ENV=staging
-    - NODE_ENV=production
+  - "0.8"
 install:
   - npm install -g mocha istanbul
-  - NODE_ENV=development npm install
+  - npm install
 script:
   - git describe --always --tags --long
+  - git rev-parse --abbrev-ref HEAD
   - npm test
-after_success:
-  - echo "NODE_ENV=$NODE_ENV WORK_PROCESSES=$WORK_PROCESSES AWS_KEY=$AWS_KEY"
