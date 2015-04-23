@@ -36,3 +36,11 @@ deploy:
 after_deploy:
 - echo "after deploy"
 - curl https://forhot2000-node-hello.herokuapp.com/
+
+branches:
+  only:
+  - master
+  - develop
+cache:
+  directories:
+  - node_modules
