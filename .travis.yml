@@ -1,30 +1,28 @@
 language: node_js
 node_js:
-# - "0.12"
-# - "0.11"
-- "0.10"
-
+- '0.10'
 before_install:
 - echo "before install"
 install:
 - npm install -g mocha istanbul
 - npm install
-# no after_install
-
 script:
 - git describe --always --tags --long
 - git rev-parse --abbrev-ref HEAD
-- istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+- istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat
+  ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 after_success:
 - echo "success"
 after_failure:
 - echo "failure"
 after_script:
 - echo "after script"
-
 before_deploy:
 - echo "defore deploy"
-# deploy:
-# - echo "deploy"
-# after_deploy:
-# - echo "after_deploy"
+deploy:
+  provider: heroku
+  app: forhot2000-node-hello
+  api_key:
+    secure: m8XIXcUtSW/Da5QTLUoBjReIptHQANjj0BVS5AKYx1/2QyjfwDFLBEWs5lcvKjwCwTqvK1nAlS/pcNMVwExK6wH2VM0a7HDi561LF8ZTmeQsxh49qfQdZPgqoSrHSR1JTxkyOM1uKljqZ6wQC5z4qft+8Bd86mDVIBtfMebAD1Q=
+after_deploy:
+- echo "after_deploy"
