@@ -33,4 +33,4 @@ deploy:
     secure: m8XIXcUtSW/Da5QTLUoBjReIptHQANjj0BVS5AKYx1/2QyjfwDFLBEWs5lcvKjwCwTqvK1nAlS/pcNMVwExK6wH2VM0a7HDi561LF8ZTmeQsxh49qfQdZPgqoSrHSR1JTxkyOM1uKljqZ6wQC5z4qft+8Bd86mDVIBtfMebAD1Q=
   # default only deply master branch
 after_deploy:
-- echo "after_deploy"
+- curl https://forhot2000-node-hello.herokuapp.com/
