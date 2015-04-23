@@ -5,24 +5,24 @@ node_js:
 - '0.10'
 
 before_install:
-- echo "before install"
-install:
 - npm install -g mocha istanbul
-- npm install
+# install:
+# - npm install
 # no after_install
 
-script:
+before_script:
 - git describe --always --tags --long
 - git rev-parse --abbrev-ref HEAD
-- istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec &&
-  cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js &&
-  rm -rf ./coverage
+script:
+- istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
 after_success:
 - echo "success"
+- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 after_failure:
 - echo "failure"
 after_script:
 - echo "after script"
+- rm -rf ./coverage
 
 before_deploy:
 - echo "defore deploy"
