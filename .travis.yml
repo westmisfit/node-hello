@@ -24,7 +24,7 @@ after_script:
 
 before_deploy:
 - echo "defore deploy"
-deploy:
-- echo "deploy"
-after_deploy:
-- echo "after_deploy"
+# deploy:
+# - echo "deploy"
+# after_deploy:
+# - echo "after_deploy"
