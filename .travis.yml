@@ -9,8 +9,7 @@ before_install:
 install:
 - npm install -g mocha istanbul
 - npm install
-after_install:
-- echo "after install"
+# no after_install
 
 script:
 - git describe --always --tags --long
