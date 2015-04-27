@@ -1,4 +1,4 @@
-FROM misfit/cloud_nodejs
+FROM node:0.10
 
 WORKDIR /work
 
