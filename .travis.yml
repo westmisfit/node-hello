@@ -17,7 +17,7 @@ before_install:
 # - git rev-parse --abbrev-ref HEAD
 script:
 - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
-- 'curl -X PUT -H "Authorization: ${AUTH}" -H "Content-Type: application/json" -d "{\"branch\":\"${TRAVIS_BRANCH}\",\"build_num\":\"${TRAVIS_JOB_NUMBER}\"}" "http://${BUILDER}/${PROJECT}/build"'
+- 'curl -X PUT -H "Authorization: ${AUTH}" -H "Content-Type: application/json" -d "{\"branch\":\"${TRAVIS_BRANCH}\",\"build_num\":\"${TRAVIS_JOB_NUMBER}\"}" "http://${BUILDER}/${PROJECT}/build" -m 3600000'
 # after_success:
 # - echo "success"
 # after_failure:
