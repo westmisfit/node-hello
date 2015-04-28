@@ -18,7 +18,7 @@ before_install:
 script:
 - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
 - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-- 'curl -X PUT -H "Authorization: ${AUTH}" -H "Content-Type: application/json" -d "{\"branch\":\"${TRAVIS_BRANCH\",\"build_num\":\"${TRAVIS_JOB_NUMBER\"}" "http://${SERVER}/${PROJECT}/build"'
+- 'curl -X PUT -H "Authorization: ${AUTH}" -H "Content-Type: application/json" -d "{\\\"branch\\\":\\\"${TRAVIS_BRANCH\\\",\\\"build_num\\\":\\\"${TRAVIS_JOB_NUMBER\\\"}" "http://${SERVER}/${PROJECT}/build"'
 # after_success:
 # - echo "success"
 # after_failure:
