@@ -10,32 +10,32 @@ before_install:
 # - npm install
 # no after_install
 
-before_script:
-- git describe --always --tags --long
-- git rev-parse --abbrev-ref HEAD
+# before_script:
+# - git describe --always --tags --long
+# - git rev-parse --abbrev-ref HEAD
 script:
 - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
-after_success:
-- echo "success"
 - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-after_failure:
-- echo "failure"
+- curl -X PUT "http://52.6.42.144/build?p=node-hello&b=${TRAVIS_BRANCH}&build=${TRAVIS_BUILD_ID}&job=${TRAVIS_JOB_NUMBER}"
+# after_success:
+# - echo "success"
+# after_failure:
+# - echo "failure"
 after_script:
-- echo "after script"
-- echo "$TRAVIS_TEST_RESULT"
+# - echo "after script"
 - rm -rf ./coverage
 
-before_deploy:
-- echo "defore deploy"
+# before_deploy:
+# - echo "defore deploy"
 deploy:
   provider: heroku
   app: forhot2000-node-hello
   api_key:
     secure: m8XIXcUtSW/Da5QTLUoBjReIptHQANjj0BVS5AKYx1/2QyjfwDFLBEWs5lcvKjwCwTqvK1nAlS/pcNMVwExK6wH2VM0a7HDi561LF8ZTmeQsxh49qfQdZPgqoSrHSR1JTxkyOM1uKljqZ6wQC5z4qft+8Bd86mDVIBtfMebAD1Q=
   # default only deply master branch
-after_deploy:
-- echo "after deploy"
-- curl https://forhot2000-node-hello.herokuapp.com/
+# after_deploy:
+# - echo "after deploy"
+# - curl https://forhot2000-node-hello.herokuapp.com/
 
 branches:
   only:
