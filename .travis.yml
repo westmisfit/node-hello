@@ -3,6 +3,8 @@ node_js:
 # - "0.12"
 # - "0.11"
 - '0.10'
+env:
+- BUILDER="52.6.42.144" PROJECT="node-hello" AUTH="Basic bWlzZml0OlVzZXJAMTIz"
 
 before_install:
 - npm install -g mocha istanbul
@@ -16,7 +18,7 @@ before_install:
 script:
 - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
 - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-- curl -X PUT "http://52.6.42.144/build?p=node-hello&b=${TRAVIS_BRANCH}&build=${TRAVIS_BUILD_ID}&job=${TRAVIS_JOB_NUMBER}"
+- 'curl -X PUT -H "Authorization: ${AUTH}" "http://${BUILDER}/build?project=${PROJECT}&branch=${TRAVIS_BRANCH}&build=${TRAVIS_BUILD_ID}&job=${TRAVIS_JOB_NUMBER}"'
 # after_success:
 # - echo "success"
 # after_failure:
