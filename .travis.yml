@@ -47,3 +47,5 @@ branches:
 cache:
   directories:
   - node_modules
+notifications:
+  hipchat: C5Ta9DcFxSNftnD2ZMtfRJN2SbUtRLuGDQy6JXmI@1467331
