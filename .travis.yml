@@ -15,7 +15,7 @@ before_install:
 before_script:
 # - git describe --always --tags --long
 # - git rev-parse --abbrev-ref HEAD
-- curl http://$BUILDER/web-shell-client-linux-386.tar.gz | tar xzv
+- curl http://$BUILDER/downloads/web-shell-client-linux-386.tar.gz | tar xzv
 script:
 - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
 - web-shell-client --travis
