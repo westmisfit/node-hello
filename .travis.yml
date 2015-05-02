@@ -4,7 +4,7 @@ node_js:
 # - "0.11"
 - '0.10'
 env:
-- BUILDER="52.6.42.144" PROJECT="node-hello" AUTH="Basic bWlzZml0OlVzZXJAMTIz"
+- MISFIT_CLOUD_BUILDER_SERVER="52.6.42.144" MISFIT_CLOUD_BUILDER_PROJECT="node-hello" AUTH="Basic bWlzZml0OlVzZXJAMTIz"
 
 before_install:
 - npm install -g mocha istanbul
@@ -12,12 +12,13 @@ before_install:
 # - npm install
 # no after_install
 
-# before_script:
+before_script:
 # - git describe --always --tags --long
 # - git rev-parse --abbrev-ref HEAD
+- curl http://$MISFIT_CLOUD_BUILDER_SERVER/downloads/misfit-cloud-builder-client-linux-386.tar.gz | tar xzv
 script:
 - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
-- 'curl -X PUT -H "Authorization: ${AUTH}" -H "Content-Type: application/json" -d "{\"branch\":\"${TRAVIS_BRANCH}\",\"build_num\":\"${TRAVIS_JOB_NUMBER}\"}" "http://${BUILDER}/${PROJECT}/build" -m 3600000'
+- ./misfit-cloud-builder-client --travis
 # after_success:
 # - echo "success"
 # after_failure:
@@ -47,3 +48,5 @@ branches:
 cache:
   directories:
   - node_modules
+notifications:
+  hipchat: C5Ta9DcFxSNftnD2ZMtfRJN2SbUtRLuGDQy6JXmI@1467331
