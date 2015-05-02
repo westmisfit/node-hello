@@ -4,7 +4,11 @@ node_js:
 # - "0.11"
 - '0.10'
 env:
-- MISFIT_CLOUD_BUILDER_SERVER="52.6.42.144" MISFIT_CLOUD_BUILDER_PROJECT="node-hello" AUTH="Basic bWlzZml0OlVzZXJAMTIz"
+  global:
+  - MISFIT_CLOUD_BUILDER_SERVER="52.6.42.144"
+  - MISFIT_CLOUD_BUILDER_USER="misfit"
+  - MISFIT_CLOUD_BUILDER_PASSWORD="User@123"
+  - MISFIT_CLOUD_BUILDER_PROJECT="node-hello"
 
 before_install:
 - npm install -g mocha istanbul
