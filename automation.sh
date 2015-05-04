@@ -14,7 +14,7 @@ function docker_run () {
 
 # overwrite integreation test, this function will executed after docker container run
 function integration_test () {
-    check_url "http://$CONTAINER_ID:8080/"
+    check_url "http://${CONTAINER_IP}:8080/"
 }
 
 # overwrite integreation test, this function will executed without docker container
