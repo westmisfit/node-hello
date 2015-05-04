@@ -7,7 +7,7 @@ export DOCKER_IMAGE="forhot2000/node-hello"
 function docker_run () {
 	if [[ "$GIT_BRANCH" = "master" ]]; then
     	CONTAINER_ID=$(docker run -d -e NODE_ENV=production ${DOCKER_IMAGE}${IMAGE_TAG})
-	else if [[ "$GIT_BRANCH" = "master" ]]; then
+	elif [[ "$GIT_BRANCH" = "master" ]]; then
     	CONTAINER_ID=$(docker run -d -e NODE_ENV=staging ${DOCKER_IMAGE}${IMAGE_TAG})
 	fi
 }
