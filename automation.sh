@@ -8,9 +8,9 @@ export DOCKER_IMAGE="forhot2000/node-hello"
 # overwrite docker run command
 function docker_run () {
     if [[ "$GIT_BRANCH" = "master" ]]; then
-        CONTAINER_ID=$(docker run -d -e NODE_ENV=production ${DOCKER_IMAGE}${IMAGE_TAG})
+        docker run -d -e NODE_ENV=production ${DOCKER_IMAGE}:${IMAGE_TAG}
     elif [[ "$GIT_BRANCH" = "develop" ]]; then
-        CONTAINER_ID=$(docker run -d -e NODE_ENV=staging ${DOCKER_IMAGE}${IMAGE_TAG})
+        docker run -d -e NODE_ENV=staging ${DOCKER_IMAGE}:${IMAGE_TAG}
     fi
 }
 
