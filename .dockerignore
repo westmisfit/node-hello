@@ -1,6 +1,8 @@
+.coveralls.yml
 .git
 .gitignore
-node_modules
+.travis.yml
+automation.sh
 logs/?*.*
-build
-cloudformation
+node_modules
+Procfile
