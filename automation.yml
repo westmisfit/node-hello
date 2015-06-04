@@ -2,9 +2,6 @@ build:
   docker:
     # set docker repository name
     repository: forhot2000/node-hello
-    # disable push image to docker hub, this options is usefull for test
-    # set 'push: false' to disable docker push
-    push: false
 
 deploy:
   ecs:
@@ -49,12 +46,12 @@ deploy:
         desiredCount: 2
         role: ecsServiceRole
 
-test:
-  integreation:
-    - checkurl:
-        container: node_hello_web
-        port: 1338
-    # - shell: "integration_test.sh"
+# test:
+#   integreation:
+#     - checkurl:
+#         container: node_hello_web
+#         port: 1338
+#     # - shell: "integration_test.sh"
 
 # branches:
 #   only:
