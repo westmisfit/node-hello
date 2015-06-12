@@ -1,6 +1,7 @@
 .coveralls.yml
 .git
 .gitignore
+.idea
 .travis.yml
 automation.sh
 logs/?*.*
