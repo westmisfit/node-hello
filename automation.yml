@@ -1,7 +1,7 @@
 build:
   docker:
     # set docker repository name
-    repository: forhot2000/node-hello
+    repository: "forhot2000/node-hello"
 
 deploy:
   ecs:
@@ -12,45 +12,44 @@ deploy:
         containerDefinitions:
           # web server container
           - image: "{{ DOCKER_IMAGE }}"
-            name: node_hello_web
+            name: "node_hello_web"
             portMappings:
-              - { containerPort: 1338, hostPort: 8080 }
+              - { containerPort: 8080, hostPort: 4001 }
             environment: 
-              - { name: NODE_ENV, value: "{{ NODE_ENV }}" }
-              - { name: REDIS_HOST, value: "{{ REDIS_HOST }}" }
-              - { name: MONGO_HOST, value: "{{ MONGO_HOST }}" }
+              - { name: "NODE_ENV", value: "{{ NODE_ENV }}" }
+              - { name: "REDIS_HOST", value: "{{ REDIS_HOST }}" }
+              - { name: "MONGO_HOST", value: "{{ MONGO_HOST }}" }
             essential: true
             mountPoints: 
-              - { containerPath: "/work/logs", sourceVolume: logs, readOnly: false }
+              - { containerPath: "/work/logs", sourceVolume: "logs", readOnly: false }
             memory: 200
             cpu: 100
           # redis container
-          - image: redis:latest
-            name: node_hello_redis
-            essential: false
+          - image: "redis:latest"
+            name: "node_hello_redis"
             memory: 200
             cpu: 100
         volumes: 
-          - name: logs
+          - name: "logs"
             host: 
               sourcePath: "/var/log/forhot2000/node_hello"
 
     # Service Definition Parameters Reference
     # http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_definition_paramters.html
     services:
-      - cluster: sw_cloud
+      - cluster: "sw_cloud"
         serviceName: "sw-stg-test-node-hello-svc"
         taskDefinition: "{{ taskDefinitions['sw-stg-test-node-hello-task'].taskName }}"
         loadBalancers: 
-          - { loadBalancerName: "sw-stg-test-node-hello-elb", containerName: node_hello_web, containerPort: 1338 }
-        desiredCount: 2
-        role: ecsServiceRole
+          - { loadBalancerName: "sw-stg-test-node-hello-elb", containerName: "node_hello_web", containerPort: 8080 }
+        desiredCount: 1
+        role: "ecsServiceRole"
 
 # test:
 #   integreation:
 #     - checkurl:
 #         container: node_hello_web
-#         port: 1338
+#         port: 4001
 #     # - shell: "integration_test.sh"
 
 # branches:
