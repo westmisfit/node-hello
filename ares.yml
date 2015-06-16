@@ -28,7 +28,7 @@ deploy:
           - image: "redis:latest"
             name: "node_hello_redis"
             essential: false
-            memory: 200
+            memory: 400
             cpu: 100
         volumes: 
           - name: "logs"
