@@ -1,7 +1,7 @@
 build:
   docker:
     # set docker repository name
-    repository: "forhot2000/node-hello"
+    repository: "westmisfit/node-hello"
 
 deploy:
   ecs:
@@ -27,12 +27,13 @@ deploy:
           # redis container
           - image: "redis:latest"
             name: "node_hello_redis"
+            essential: false
             memory: 200
             cpu: 100
         volumes: 
           - name: "logs"
             host: 
-              sourcePath: "/var/log/forhot2000/node_hello"
+              sourcePath: "/var/log/westmisfit/node_hello"
 
     # Service Definition Parameters Reference
     # http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_definition_paramters.html

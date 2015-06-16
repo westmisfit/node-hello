@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/forhot2000/node-hello.git"
+    "url": "https://github.com/westmisfit/node-hello.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/forhot2000/node-hello/issues"
+    "url": "https://github.com/westmisfit/node-hello/issues"
   },
-  "homepage": "https://github.com/forhot2000/node-hello",
+  "homepage": "https://github.com/westmisfit/node-hello",
   "dependencies": {
     "express": "^4.10.4",
     "log4js": "^0.6.21"

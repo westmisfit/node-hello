@@ -1,17 +1,15 @@
 language: node_js
-
-node_js:
-  - '0.10'
+node_js: '0.10'
 
 before_install:
   - npm install -g mocha istanbul
 
 before_script:
-  - curl http://$MISFIT_CLOUD_BUILDER_SERVER/downloads/misfit-cloud-builder-client-linux-386.tar.gz | tar xzv
+  - curl http://$ARES_SERVER/downloads/ares-linux-386.tar.gz | tar xzv
 
 script:
   - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
-  - ./misfit-cloud-builder-client --travis
+  - ./ares
 
 after_script:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
@@ -19,12 +17,12 @@ after_script:
 
 # deploy:
 #   provider: heroku
-#   app: forhot2000-node-hello
+#   app: westmisfit-node-hello
 #   api_key:
 #     secure: m8XIXcUtSW/Da5QTLUoBjReIptHQANjj0BVS5AKYx1/2QyjfwDFLBEWs5lcvKjwCwTqvK1nAlS/pcNMVwExK6wH2VM0a7HDi561LF8ZTmeQsxh49qfQdZPgqoSrHSR1JTxkyOM1uKljqZ6wQC5z4qft+8Bd86mDVIBtfMebAD1Q=
 # after_deploy:
-#   - curl https://forhot2000-node-hello.herokuapp.com/
-#   - echo "open https://forhot2000-node-hello.herokuapp.com/ in browser"
+#   - curl https://westmisfit-node-hello.herokuapp.com/
+#   - echo "open https://westmisfit-node-hello.herokuapp.com/ in browser"
 
 branches:
   only:
