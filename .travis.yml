@@ -1,55 +1,37 @@
 language: node_js
-node_js:
-# - "0.12"
-# - "0.11"
-- '0.10'
-env:
-  global:
-  - MISFIT_CLOUD_BUILDER_SERVER="52.6.42.144"
-  - MISFIT_CLOUD_BUILDER_USER="misfit"
-  - MISFIT_CLOUD_BUILDER_PASSWORD="User@123"
+node_js: '0.10'
 
 before_install:
-- npm install -g mocha istanbul
-# install:
-# - npm install
-# no after_install
+  - npm install -g mocha istanbul
 
 before_script:
-# - git describe --always --tags --long
-# - git rev-parse --abbrev-ref HEAD
-- curl http://$MISFIT_CLOUD_BUILDER_SERVER/downloads/misfit-cloud-builder-client-linux-386.tar.gz | tar xzv
-script:
-- istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
-- ./misfit-cloud-builder-client --travis
-# after_success:
-# - echo "success"
-# after_failure:
-# - echo "failure"
-after_script:
-# - echo "after script"
-- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-- rm -rf ./coverage
+  - curl http://$ARES_SERVER/downloads/ares-linux-386.tar.gz | tar xzv
 
-# before_deploy:
-# - echo "defore deploy"
-deploy:
-  provider: heroku
-  app: forhot2000-node-hello
-  api_key:
-    secure: m8XIXcUtSW/Da5QTLUoBjReIptHQANjj0BVS5AKYx1/2QyjfwDFLBEWs5lcvKjwCwTqvK1nAlS/pcNMVwExK6wH2VM0a7HDi561LF8ZTmeQsxh49qfQdZPgqoSrHSR1JTxkyOM1uKljqZ6wQC5z4qft+8Bd86mDVIBtfMebAD1Q=
-  # default only deply master branch
-after_deploy:
-# - echo "after deploy"
-# - curl https://forhot2000-node-hello.herokuapp.com/
-- echo "open https://forhot2000-node-hello.herokuapp.com/ in browser"
+script:
+  - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
+  - ./ares
+
+after_script:
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - rm -rf ./coverage
+
+# deploy:
+#   provider: heroku
+#   app: westmisfit-node-hello
+#   api_key:
+#     secure: m8XIXcUtSW/Da5QTLUoBjReIptHQANjj0BVS5AKYx1/2QyjfwDFLBEWs5lcvKjwCwTqvK1nAlS/pcNMVwExK6wH2VM0a7HDi561LF8ZTmeQsxh49qfQdZPgqoSrHSR1JTxkyOM1uKljqZ6wQC5z4qft+8Bd86mDVIBtfMebAD1Q=
+# after_deploy:
+#   - curl https://westmisfit-node-hello.herokuapp.com/
+#   - echo "open https://westmisfit-node-hello.herokuapp.com/ in browser"
 
 branches:
   only:
-  - master
-  - develop
+    - master
+    - develop
+
 cache:
   directories:
-  - node_modules
+    - node_modules
+
 notifications:
   hipchat: C5Ta9DcFxSNftnD2ZMtfRJN2SbUtRLuGDQy6JXmI@1467331

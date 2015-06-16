@@ -1,0 +1,59 @@
+build:
+  docker:
+    # set docker repository name
+    repository: "westmisfit/node-hello"
+
+deploy:
+  ecs:
+    # Task Definition Parameters Reference
+    # http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html
+    tasks:
+      - family: "sw-stg-test-node-hello-task"
+        containerDefinitions:
+          # web server container
+          - image: "{{ DOCKER_IMAGE }}"
+            name: "node_hello_web"
+            portMappings:
+              - { containerPort: 8080, hostPort: 4001 }
+            environment: 
+              - { name: "NODE_ENV", value: "{{ NODE_ENV }}" }
+              - { name: "REDIS_HOST", value: "{{ REDIS_HOST }}" }
+              - { name: "MONGO_HOST", value: "{{ MONGO_HOST }}" }
+            essential: true
+            mountPoints: 
+              - { containerPath: "/work/logs", sourceVolume: "logs", readOnly: false }
+            memory: 200
+            cpu: 100
+          # redis container
+          - image: "redis:latest"
+            name: "node_hello_redis"
+            essential: false
+            memory: 200
+            cpu: 100
+        volumes: 
+          - name: "logs"
+            host: 
+              sourcePath: "/var/log/westmisfit/node_hello"
+
+    # Service Definition Parameters Reference
+    # http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_definition_paramters.html
+    services:
+      - cluster: "sw_cloud"
+        serviceName: "sw-stg-test-node-hello-svc"
+        taskDefinition: "{{ taskDefinitions['sw-stg-test-node-hello-task'].taskName }}"
+        loadBalancers: 
+          - { loadBalancerName: "sw-stg-test-node-hello-elb", containerName: "node_hello_web", containerPort: 8080 }
+        desiredCount: 1
+        role: "ecsServiceRole"
+
+# test:
+#   integreation:
+#     - checkurl:
+#         container: node_hello_web
+#         port: 4001
+#     # - shell: "integration_test.sh"
+
+# branches:
+#   only:
+#     - master
+#     - develop

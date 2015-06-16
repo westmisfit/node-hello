@@ -1,4 +1,4 @@
 # Demo NodeJS Web Server
 
-[![Build Status](https://travis-ci.org/forhot2000/node-hello.svg?branch=master)](https://travis-ci.org/forhot2000/node-hello)
-[![Coverage Status](https://coveralls.io/repos/forhot2000/node-hello/badge.svg?branch=master)](https://coveralls.io/r/forhot2000/node-hello?branch=master)
+[![Build Status](https://travis-ci.org/westmisfit/node-hello.svg?branch=master)](https://travis-ci.org/westmisfit/node-hello)
+[![Coverage Status](https://coveralls.io/repos/westmisfit/node-hello/badge.svg?branch=master)](https://coveralls.io/r/westmisfit/node-hello?branch=master)
