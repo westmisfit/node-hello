@@ -6,7 +6,6 @@ ENV PORT 8080
 EXPOSE 8080
 
 # pre install node modules
-RUN npm install -g mocha istanbul
 ADD package.json /work/
 RUN npm install
 

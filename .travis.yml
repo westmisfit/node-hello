@@ -1,14 +1,11 @@
 language: node_js
 node_js: '0.10'
 
-before_install:
-  - npm install -g mocha istanbul
-
 before_script:
   - curl http://$ARES_SERVER/downloads/ares-linux-386.tar.gz | tar xzv
 
 script:
-  - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
+  - node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
   - ./ares
 
 after_script:
